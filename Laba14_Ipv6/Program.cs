@@ -1,0 +1,27 @@
+﻿
+using System.Text.RegularExpressions;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Console.WriteLine("Введите ip адреса через пробел");
+        string? ips = Console.ReadLine();
+        Regex ipv6Regex = new Regex(@"^((([0-9abcdefABCDEF]{1,4}:){7}[0-9abcdefABCDEF]{1,4})|(([0-9abcdefABCDEF]]{1,4}:){1,7}:)|(([0-9abcdefABCDEF]{1,4}:){1,2}(:[0-9abcdefABCDEF]{1,4}){1,5})|(([0-9abcdefABCDEF]{1,4}:){1,3}(:[0-9abcdefABCDEF]{1,4}){1,4})|(([0-9abcdefABCDEF]{1,4}:){1,4}(:[0-9abcdefABCDEF]{1,4}){1,3})|(([0-9abcdefABCDEF]{1,4}:){1,5}(:[0-9abcdefABCDEF]{1,4}){1,2})|(:(:([0-9abcdefABCDEF]){1,4}){1,7}))$");
+        Regex ipv4 = new Regex(@"^(((([01]?[0-9][0-9]?)|(2[0-4][0-9])|(25[0-5]))\.){3}(([01]?[0-9][0-9]?)|(2[0-4][0-9])|(25[0-5])))$");
+
+        var temp = ips.Split(" ");
+
+        foreach (string item in ips.Split(" "))
+        {
+            if (ipv4.IsMatch(item))
+            {
+                Console.WriteLine(item + " ipv4 адрес");
+            }
+            if(ipv6Regex.IsMatch(item))
+            {
+                Console.WriteLine(item+ " ipv6 адрес");
+            }
+        }
+    }
+}

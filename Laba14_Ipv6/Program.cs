@@ -25,6 +25,6 @@ internal class Program
                 Console.WriteLine(item+ " ipv6 адрес");
             }
         }
-        if (wasMatch) Console.WriteLine("Нет корректного ip адреса");
+        if (!wasMatch) Console.WriteLine("Нет корректного ip адреса");
     }
 }
